@@ -14,10 +14,10 @@ def webhook():
     token = request.form.get('token')
     if not SLACK_OUTGOING_WEBHOOK_TOKEN or token == SLACK_OUTGOING_WEBHOOK_TOKEN:
         params = {
-                'username': 'anonbot',
+                'username': 'anon',
                 'icon_emoji': ':ghost:',
                 'text': request.form.get('text'),
-                'channel': '#%s' % request.form.get('channel_name')
+#               'channel': '#%s' % request.form.get('channel_name')
         }
         try:
             response = requests.post(SLACK_INCOMING_WEBHOOK_URL, data=json.dumps(params))
